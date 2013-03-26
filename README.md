@@ -1,6 +1,6 @@
 # NAME
 
-Dist::Zilla::Plugin::LicenseFromModule - Extract License and Copyright from .pm file
+Dist::Zilla::Plugin::LicenseFromModule - Extract License and Copyright from its main\_module file
 
 # SYNOPSIS
 
