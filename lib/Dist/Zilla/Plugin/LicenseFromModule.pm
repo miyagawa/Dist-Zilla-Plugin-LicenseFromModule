@@ -121,7 +121,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::LicenseFromModule - Extract License and Copyright from .pm file
+Dist::Zilla::Plugin::LicenseFromModule - Extract License and Copyright from its main_module file
 
 =head1 SYNOPSIS
 
