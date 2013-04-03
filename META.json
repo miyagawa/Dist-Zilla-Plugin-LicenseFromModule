@@ -4,7 +4,7 @@
       "Tatsuhiko Miyagawa <miyagawa@bulknews.net>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300031, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Milla version v0.9.6, Dist::Zilla version 4.300032, CPAN::Meta::Converter version 2.130880",
    "license" : [
       "perl_5"
    ],
@@ -13,6 +13,16 @@
       "version" : "2"
    },
    "name" : "Dist-Zilla-Plugin-LicenseFromModule",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples"
+      ]
+   },
    "prereqs" : {
       "configure" : {
          "requires" : {
@@ -44,6 +54,6 @@
          "web" : "https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
 
