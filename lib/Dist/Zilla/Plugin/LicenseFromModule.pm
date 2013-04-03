@@ -5,7 +5,20 @@ our $VERSION = '0.01';
 use Moose;
 with 'Dist::Zilla::Role::LicenseProvider';
 
+has 'override_author', is => 'rw', isa => 'Bool', default => 0;
+
 use Software::LicenseUtils;
+
+sub should_override_author {
+    my $self = shift;
+
+    return unless $self->override_author;
+
+    my $stash = $self->zilla->stash_named('%User');
+    return unless $stash; # no %User stash means author is taken out of copyright_holder anyway
+
+    return $stash->authors->[0] eq $self->zilla->authors->[0];
+}
 
 sub provide_license {
     my($self, $args) = @_;
@@ -14,6 +27,10 @@ sub provide_license {
 
     my $author = $self->author_from($content);
     my $year = $self->copyright_year_from($content);
+
+    if ($self->should_override_author) {
+        $self->zilla->{authors} = [ $author ]; # XXX ughhh because it's readonly
+    }
 
     my @guess = Software::LicenseUtils->guess_license_from_pod($content);
 
