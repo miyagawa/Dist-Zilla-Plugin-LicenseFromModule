@@ -2,6 +2,9 @@ Revision history for Dist-Zilla-Plugin-LicenseFromModule
 
 {{$NEXT}}
 
+0.03  2013-04-06 21:42:10 PDT
+        - Bump Dist::Zilla dependency for LicenseProvider
+
 0.02  2013-04-02 22:52:43 PDT
         - Added undocumented override_author option to set $zilla->authors
 
