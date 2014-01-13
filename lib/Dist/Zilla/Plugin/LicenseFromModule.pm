@@ -3,6 +3,7 @@ use strict;
 our $VERSION = '0.03';
 
 use Moose;
+use Module::Runtime qw(use_module);
 with 'Dist::Zilla::Role::LicenseProvider';
 
 has 'override_author', is => 'rw', isa => 'Bool', default => 0;
@@ -45,7 +46,7 @@ sub provide_license {
                 $self->zilla->main_module->name, $license_class,
                 $year || '(unknown)', $author || '(unknown)']);
 
-    Class::MOP::load_class($license_class);
+    use_module($license_class);
 
     return $license_class->new({
         holder => $author || $args->{copyright_holder},
