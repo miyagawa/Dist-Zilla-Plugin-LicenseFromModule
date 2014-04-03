@@ -8,6 +8,7 @@ with 'Dist::Zilla::Role::LicenseProvider';
 has 'override_author', is => 'rw', isa => 'Bool', default => 0;
 
 use Software::LicenseUtils;
+use Module::Load ();
 
 sub should_override_author {
     my $self = shift;
@@ -45,7 +46,7 @@ sub provide_license {
                 $self->zilla->main_module->name, $license_class,
                 $year || '(unknown)', $author || '(unknown)']);
 
-    Class::MOP::load_class($license_class);
+    Module::Load::load($license_class);
 
     return $license_class->new({
         holder => $author || $args->{copyright_holder},
