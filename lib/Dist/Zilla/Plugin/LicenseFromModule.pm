@@ -69,7 +69,7 @@ sub author_from {
         my $author = $1 || $2;
 
         # XXX: ugly but should work anyway...
-        if (eval "require Pod::Escapes; 1") { ## no critics.
+        if (eval { require Pod::Escapes; 1 }) { ## no critics.
             # Pod::Escapes has a mapping table.
             # It's in core of perl >= 5.9.3, and should be installed
             # as one of the Pod::Simple's prereqs, which is a prereq
@@ -87,7 +87,7 @@ sub author_from {
             }gex;
         }
             ## no critic.
-        elsif (eval "require Pod::Text; 1" && $Pod::Text::VERSION < 3) {
+        elsif (eval { require Pod::Text; 1 } && $Pod::Text::VERSION < 3) {
             # Pod::Text < 3.0 has yet another mapping table,
             # though the table name of 2.x and 1.x are different.
             # (1.x is in core of Perl < 5.6, 2.x is in core of
