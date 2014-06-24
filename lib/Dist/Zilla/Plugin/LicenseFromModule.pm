@@ -7,7 +7,6 @@ with 'Dist::Zilla::Role::LicenseProvider';
 
 has 'override_author', is => 'rw', isa => 'Bool', default => 0;
 
-use Software::LicenseUtils;
 use Module::Load ();
 
 sub should_override_author {
@@ -33,6 +32,7 @@ sub provide_license {
         $self->zilla->{authors} = [ $author ]; # XXX ughhh because it's readonly
     }
 
+    require Software::LicenseUtils;
     my @guess = Software::LicenseUtils->guess_license_from_pod($content);
 
     if (@guess != 1) {
