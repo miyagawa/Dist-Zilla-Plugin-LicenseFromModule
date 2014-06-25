@@ -7,6 +7,21 @@ with 'Dist::Zilla::Role::LicenseProvider';
 
 has 'override_author', is => 'rw', isa => 'Bool', default => 0;
 
+has source_module => (
+    is => 'ro',
+    lazy => 1,
+    isa => 'Str',
+    default => sub { shift->zilla->main_module->name; },
+);
+
+sub _file_from_filename {
+    my ($self, $filename) = @_;
+    for my $file (@{$self->zilla->files}) {
+        return $file if $file->name eq $filename;
+    }
+    die 'no file module $filename in dist';
+}
+
 use Software::LicenseUtils;
 use Module::Load ();
 
@@ -24,7 +39,7 @@ sub should_override_author {
 sub provide_license {
     my($self, $args) = @_;
 
-    my $content = $self->zilla->main_module->content;
+    my $content = $self->_file_from_filename($self->source_module)->content;
 
     my $author = $self->author_from($content);
     my $year = $self->copyright_year_from($content);
