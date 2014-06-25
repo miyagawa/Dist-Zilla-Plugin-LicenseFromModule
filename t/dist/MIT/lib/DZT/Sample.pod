@@ -1,0 +1,11 @@
+=head1 COPYRIGHT
+
+Copyright 2012 John J. Doe E<lt>john.doe@example.comE<gt>
+
+=head1 LICENSE
+
+MIT License
+
+=cut
+
+

@@ -7,7 +7,7 @@ with 'Dist::Zilla::Role::LicenseProvider';
 
 has 'override_author', is => 'rw', isa => 'Bool', default => 0;
 
-has source_module => (
+has source_file => (
     is => 'ro',
     lazy => 1,
     isa => 'Str',
@@ -39,7 +39,7 @@ sub should_override_author {
 sub provide_license {
     my($self, $args) = @_;
 
-    my $content = $self->_file_from_filename($self->source_module)->content;
+    my $content = $self->_file_from_filename($self->source_file)->content;
 
     my $author = $self->author_from($content);
     my $year = $self->copyright_year_from($content);
