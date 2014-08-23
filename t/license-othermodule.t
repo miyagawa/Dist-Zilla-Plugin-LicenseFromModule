@@ -7,7 +7,7 @@ sub test_build {
     my($path, $cb, $ini) = @_;
 
     unless ($ini) {
-        $ini = simple_ini('GatherDir', 'MetaJSON', 'License', 'LicenseFromModule');
+        $ini = simple_ini('GatherDir', 'MetaJSON', 'License', [ 'LicenseFromModule', {source_file => 'lib/DZT/Other.pm',},]);
         $ini =~ s/^(?:author|license|copyright.*) = .*$//mg;
     }
 
@@ -30,22 +30,22 @@ sub test_build {
 test_build 't/dist/Perl5', sub {
     my($meta, $license) = @_;
 
-    is $meta->{author}[0], 'John Doe';
+    is $meta->{author}[0], 'Jane Doe';
     is $meta->{license}[0], 'perl_5';
 
-    like $license, qr/2001- by John Doe/;
+    like $license, qr/2001- by Jane Doe/;
 };
 
 test_build 't/dist/MIT', sub {
     my($meta, $license) = @_;
 
-    is $meta->{author}[0], 'John Doe <john.doe@example.com>';
+    is $meta->{author}[0], 'John Doe <john.doe@other.pm>';
     is $meta->{license}[0], 'mit';
     like $license, qr/2012 by John Doe/;
 };
 
 
-my $ini = simple_ini('GatherDir', 'MetaJSON', 'License', [ 'LicenseFromModule', { override_author => 1 } ]);
+my $ini = simple_ini('GatherDir', 'MetaJSON', 'License', [ 'LicenseFromModule', { override_author => 1, source_file => 'lib/DZT/Other.pm' } ]);
 $ini =~ s/^(?:license|copyright_holder) = .*$//mg;
 $ini =~ s/^author = .*$/author = Tom Hanks/m;
 
