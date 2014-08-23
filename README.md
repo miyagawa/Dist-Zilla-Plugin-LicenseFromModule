@@ -15,7 +15,7 @@ document.
 
 Dist::Zilla by default already extracts license from POD when it's not
 specified, but it will bail out if you don't specify the right
-copyright holder. This plugin will scan license __and__ copyright
+copyright holder. This plugin will scan license **and** copyright
 holder from the POD document, like [Module::Install](https://metacpan.org/pod/Module::Install)'s
 `license_from` and `author_from`.
 

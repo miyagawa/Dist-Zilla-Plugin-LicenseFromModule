@@ -2,6 +2,10 @@ Revision history for Dist-Zilla-Plugin-LicenseFromModule
 
 {{$NEXT}}
 
+0.05  2014-08-23 14:03:32 PDT
+        - Scan for .pod of the main module if it exists #3 (DarwinAwardWinner)
+        - Add source_file option #3 (DarwinAwardWinner)
+
 0.04  2014-04-03 14:42:38 PDT
         - use Module::Load instead of Class::MOP::load_class
 
