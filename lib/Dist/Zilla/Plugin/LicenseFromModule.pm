@@ -16,15 +16,9 @@ has source_file => (
 
 sub _default_source_file {
     my $self = shift;
-    my $mm_pmfile = $self->zilla->main_module->name;
-    # Check for a pod file with the same basename
-    if ($mm_pmfile =~ m{\.pm$}) {
-        my $mm_podfile = substr($mm_pmfile, 0, -3) . ".pod";
-        if ( -e $mm_podfile ) {
-            return $mm_podfile;
-        }
-    }
-    return $mm_pmfile;
+    my $pm = $self->zilla->main_module->name;
+    (my $pod = $pm) =~  s/\.pm$/\.pod/;
+    return -e $pod ? $pod : $pm;
 }
 
 sub _file_from_filename {
