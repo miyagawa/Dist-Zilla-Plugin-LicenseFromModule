@@ -1,6 +1,6 @@
 =head1 COPYRIGHT
 
-Copyright 2012 John Doe E<lt>john.doe@sample.podE<gt>
+Copyright 2012 John Doe E<lt>john.doe@other.pod<gt>
 
 =head1 LICENSE
 

@@ -39,7 +39,7 @@ test_build 't/dist/Perl5', sub {
 test_build 't/dist/MIT', sub {
     my($meta, $license) = @_;
 
-    is $meta->{author}[0], 'John Doe <john.doe@example.com>';
+    is $meta->{author}[0], 'John Doe <john.doe@sample.pod>';
     is $meta->{license}[0], 'mit';
     like $license, qr/2012 by John Doe/;
 };

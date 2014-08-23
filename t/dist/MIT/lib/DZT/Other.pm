@@ -4,7 +4,7 @@ __END__
 
 =head1 COPYRIGHT
 
-Copyright 2012 Jane Doe E<lt>jane.doe@example.comE<gt>
+Copyright 2012 John Doe E<lt>john.doe@other.pmE<gt>
 
 =head1 LICENSE
 

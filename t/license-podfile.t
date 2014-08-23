@@ -1,5 +1,6 @@
 use strict;
 use Test::More;
+use Test::Exception;
 use Test::DZil;
 use JSON;
 
@@ -27,21 +28,15 @@ sub test_build {
     $cb->($meta, $license);
 };
 
-test_build 't/dist/Perl5', sub {
-    my($meta, $license) = @_;
-
-    is $meta->{author}[0], 'John J. Doe';
-    is $meta->{license}[0], 'perl_5';
-
-    like $license, qr/2001- by John J. Doe/;
-};
+dies_ok { test_build 't/dist/Perl5', sub {} },
+  "Fails to build when pod isn't there.";
 
 test_build 't/dist/MIT', sub {
     my($meta, $license) = @_;
 
-    is $meta->{author}[0], 'John J. Doe <john.doe@example.com>';
+    is $meta->{author}[0], 'John Doe <john.doe@sample.pod>';
     is $meta->{license}[0], 'mit';
-    like $license, qr/2012 by John J. Doe/;
+    like $license, qr/2012 by John Doe/;
 };
 
 
@@ -54,7 +49,7 @@ test_build 't/dist/MIT', sub {
 
     is $meta->{author}[0], 'Tom Hanks';
     is $meta->{license}[0], 'mit';
-    like $license, qr/2012 by John J. Doe/;
+    like $license, qr/2012 by John Doe/;
 }, $ini;
 
 done_testing;
