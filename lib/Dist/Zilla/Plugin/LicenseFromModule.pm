@@ -11,8 +11,21 @@ has source_file => (
     is => 'ro',
     lazy => 1,
     isa => 'Str',
-    default => sub { shift->zilla->main_module->name; },
+    builder => '_default_source_file',
 );
+
+sub _default_source_file {
+    my $self = shift;
+    my $mm_pmfile = $self->zilla->main_module->name;
+    # Check for a pod file with the same basename
+    if ($mm_pmfile =~ m{\.pm$}) {
+        my $mm_podfile = substr($mm_pmfile, 0, -3) . ".pod";
+        if ( -e $mm_podfile ) {
+            return $mm_podfile;
+        }
+    }
+    return $mm_pmfile;
+}
 
 sub _file_from_filename {
     my ($self, $filename) = @_;
@@ -58,7 +71,7 @@ sub provide_license {
     my $license_class = $guess[0];
 
     $self->log(["guessing from %s, License is %s\nCopyright %s %s",
-                $self->zilla->main_module->name, $license_class,
+                $self->source_file, $license_class,
                 $year || '(unknown)', $author || '(unknown)']);
 
     Module::Load::load($license_class);
