@@ -26,7 +26,7 @@ sub _file_from_filename {
     for my $file (@{$self->zilla->files}) {
         return $file if $file->name eq $filename;
     }
-    die 'no file module $filename in dist';
+    die "no file module $filename in dist";
 }
 
 use Software::LicenseUtils;
