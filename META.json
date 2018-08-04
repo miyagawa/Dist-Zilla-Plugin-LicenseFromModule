@@ -61,9 +61,11 @@
          "web" : "https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule"
       }
    },
-   "version" : "0.06",
+   "version" : "0.07",
    "x_contributors" : [
-      "Ryan C. Thompson <rct@thompsonclan.org>"
+      "Flavio Poletti <flavio@polettix.it>",
+      "Ryan C. Thompson <rct@thompsonclan.org>",
+      "Tatsuhiko Miyagawa <miyagawa@gmail.com>"
    ],
    "x_generated_by_perl" : "v5.20.1",
    "x_serialization_backend" : "Cpanel::JSON::XS version 4.02",

@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::LicenseFromModule;
 use strict;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use Moose;
 with 'Dist::Zilla::Role::LicenseProvider';
