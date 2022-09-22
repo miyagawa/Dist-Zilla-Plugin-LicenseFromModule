@@ -16,7 +16,7 @@ document.
 Dist::Zilla by default already extracts license from POD when it's not
 specified, but it will bail out if you don't specify the right
 copyright holder. This plugin will scan license **and** copyright
-holder from the POD document, like [Module::Install](https://metacpan.org/pod/Module::Install)'s
+holder from the POD document, like [Module::Install](https://metacpan.org/pod/Module%3A%3AInstall)'s
 `license_from` and `author_from`.
 
 # AUTHOR
@@ -34,4 +34,4 @@ it under the same terms as Perl itself.
 
 # SEE ALSO
 
-[Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) [Dist::Zilla::Plugin::VersionFromModule](https://metacpan.org/pod/Dist::Zilla::Plugin::VersionFromModule)
+[Dist::Zilla](https://metacpan.org/pod/Dist%3A%3AZilla) [Dist::Zilla::Plugin::VersionFromModule](https://metacpan.org/pod/Dist%3A%3AZilla%3A%3APlugin%3A%3AVersionFromModule)
