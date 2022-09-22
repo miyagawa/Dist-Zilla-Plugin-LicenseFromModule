@@ -1,7 +1,7 @@
 use strict;
 use Test::More;
 use Test::DZil;
-use JSON;
+use JSON::PP;
 
 sub test_build {
     my($path, $cb, $ini) = @_;
@@ -21,7 +21,7 @@ sub test_build {
     $tzil->build;
 
     my $json = $tzil->slurp_file('build/META.json');
-    my $meta = JSON::decode_json($json);
+    my $meta = JSON::PP::decode_json($json);
     my $license = $tzil->slurp_file('build/LICENSE');
 
     $cb->($meta, $license);
