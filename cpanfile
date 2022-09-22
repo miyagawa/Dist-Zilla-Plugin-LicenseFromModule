@@ -4,5 +4,5 @@ requires 'Software::License';
 requires 'Module::Load', 0.32;
 
 on test => sub {
-    requires 'JSON';
+    requires 'JSON::PP';
 };

@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-LicenseFromModule
 
 {{$NEXT}}
+        - changed dependency on JSON -> JSON::PP
 
 0.07  2018-08-04 10:57:49 PDT
         - Same as 0.06
